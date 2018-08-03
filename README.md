@@ -18,7 +18,23 @@ It's a starting package to get a web project up and running quickly, using: Nunj
 
 ## Install
 
+Make sure you have NodeJS - [download](https://nodejs.org/)
+
+Once you have node on your machine:
+
+* navigate into this project's root via your command line
+* then run: `npm install`
+
 ## Technologies Used
+
+#### SCSS
+* todo
+
+#### JS
+* todo
+
+#### Nunjucks (HTML)
+* todo
 
 ## Gulp Builds (dev/prod)
 
