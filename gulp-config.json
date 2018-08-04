@@ -1,0 +1,16 @@
+{
+  "baseCdnName": "webstarter",
+  "cssVersion": "0.1",
+  "jsVersion": "0.1",
+  "gitProjectName": "web-starter-nse",
+  "js": {
+    "requireJs": {
+      "active": false,
+      "path": "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.js"
+    },
+    "jsES6": {
+      "active": true
+    }
+  },
+  "outputFileName": "webstarter"
+}
