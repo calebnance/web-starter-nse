@@ -66,4 +66,10 @@ There are two options for js bundling, ES6 Modules or RequireJS. Edit the `/gulp
 
 ## Gulp Builds (dev/prod)
 
+**Dev Build**
+* Run: `npm run dev` when developing locally.
+
+**Production Build**
+* Run: `npm run prod` when code is ready for production.
+
 built with :heart:, Caleb
