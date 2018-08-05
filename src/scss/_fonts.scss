@@ -1,0 +1,12 @@
+/////////////////////////////////////////////
+// fonts
+/////////////////////////////////////////////
+
+@font-face {
+  // there is a bug for font face, so i am adding sans-serif to match completely.
+  // https://github.com/FullHuman/purgecss/issues/79
+  font-family: 'Sample_Font_Face', sans-serif;
+  src: url('../fonts/sampleFontFace.woff2') format('woff2'),
+       url('../fonts/sampleFontFace.woff') format('woff'),
+       url('../fonts/sampleFontFace.ttf') format('truetype');
+}

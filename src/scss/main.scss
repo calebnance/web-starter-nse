@@ -1,0 +1,54 @@
+/////////////////////////////////////////////
+// base / config
+/////////////////////////////////////////////
+@import 'reset';
+@import 'variables';
+@import 'mixins';
+@import 'fonts';
+@import 'animations';
+@import 'dry-base';
+
+// shared components
+/////////////////////////////////////////////
+
+
+// DELETE THIS - start
+body {
+  background-color: #1d2d3a;
+
+  // example of media query mixin
+  @include media(md) {
+    background-color: #424957;
+  }
+}
+
+.nav {
+  background-color: #f1f4f4;
+  color: #3a4451;
+  font-size: 24px;
+  left: 0;
+  position: fixed;
+  padding: 8px;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 100%;
+
+  // example of media query mixin
+  @include media(md) {
+    background-color: #3a4451;
+    padding: 24px;
+  }
+}
+
+.logo {
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+
+  img {
+    width: 200px;
+  }
+}
+// DELETE THIS - end

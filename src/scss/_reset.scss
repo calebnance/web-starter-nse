@@ -1,0 +1,29 @@
+/////////////////////////////////////////////
+// reset
+// this file is based off of reset.css
+// written by eric meyer
+// http://meyerweb.com/eric/tools/css/reset/
+// v2.0 | 20110126
+// license: none (public domain)
+/////////////////////////////////////////////
+
+div, span, p, a, img, small, strong, ol, ul, li, & {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+	font-weight: normal;
+	line-height: 1;
+	vertical-align: baseline;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// html5 display-role reset for older browsers
+footer, header, section {
+	display: block;
+}
+
+ol, ul {
+	list-style: none;
+}
