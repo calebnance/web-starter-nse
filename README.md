@@ -43,8 +43,23 @@ Everything for SCSS starts at: `src/scss/main.scss`
 * animations and animation helpers
 * font face support
 * easily turn on and off what gets included
+
 #### JS
-* todo
+There are two options for js bundling, ES6 Modules or RequireJS. Edit the `/gulp-config.js` file to turn on/off which, ES6 Modules are used by default.
+
+* **ES6 Modules** (default)
+    * starter file: `src/js/jsES6/main.js`
+    * examples:
+        * how to import a js module
+        * use of services.js (helper functions)
+        * purgeCSS javascript test (mention of a class only within js), purgeCSS works! It keeps the class `.fadeOut`
+    * code treeshaking happens on *production* build
+
+* **RequireJS**
+    * starter file: `src/js/requireJS/main.js`
+    * examples `src/js/requireJS/modules/logo-fade-in.js`:
+        * how to include a js module in RequireJS
+        * use of services.js (helper functions)
 
 #### Nunjucks (HTML)
 * todo
