@@ -34,14 +34,14 @@ const config = require('./gulp-config.json');
 \******************************************************************************/
 
 // are we running in production?
-var prod = process.env.NODE_ENV === 'production';
+const prod = process.env.NODE_ENV === 'production';
 
 // dist folder
-var distFolderName = !prod ? 'dist' : 'dist_prod';
+const distFolderName = !prod ? 'dist' : 'dist_prod';
 
 // base file names
-var cssOutputName = !prod ? `${config.outputFileName}.v${config.cssVersion}` : `${config.outputFileName}.v${config.cssVersion}.min`;
-var jsOutputName = `${config.outputFileName}.v${config.jsVersion}`;
+let cssOutputName = !prod ? `${config.outputFileName}.v${config.cssVersion}` : `${config.outputFileName}.v${config.cssVersion}.min`;
+let jsOutputName = `${config.outputFileName}.v${config.jsVersion}`;
 
 // production end points
 var cdn = config.cdnBase;
