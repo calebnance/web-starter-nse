@@ -1,3 +1,4 @@
+// gulp all the things
 const autoprefixer = require('gulp-autoprefixer');
 const babel = require('babelify');
 const browserify = require('browserify');
@@ -32,18 +33,18 @@ const config = require('./gulp-config.json');
  * VARIABLES
 \******************************************************************************/
 
-// project
+// are we running in production?
 var prod = process.env.NODE_ENV === 'production';
 
 // dist folder
 var distFolderName = !prod ? 'dist' : 'dist_prod';
 
 // base file names
-var cssOutputName = !prod ? `${config.outputFileName}-all.v${config.cssVersion}` : `${config.outputFileName}-all.v${config.cssVersion}.min`;
-var jsOutputName = `${config.outputFileName}-all.v${config.jsVersion}`;
+var cssOutputName = !prod ? `${config.outputFileName}.v${config.cssVersion}` : `${config.outputFileName}.v${config.cssVersion}.min`;
+var jsOutputName = `${config.outputFileName}.v${config.jsVersion}`;
 
 // production end points
-var cdn = `https://pathtocdnhere/${config.baseCdnName}/`;
+var cdn = config.cdnBase;
 var cssCDNPath = `${cdn}css/`;
 var fontCDNPath = `${cdn}fonts/`;
 var imgCDNPath = `${cdn}images/`;
@@ -83,7 +84,7 @@ const commonTasks = [
   'purgecss'
 ];
 
-// tasks to run for developing only
+// tasks to run for local dev builds only
 const devTasks = [
   'clearConsole',
   'watch'
@@ -127,6 +128,7 @@ gulp.task('html:watch', () => {
 \******************************************************************************/
 
 gulp.task('clean', () => {
+  // remove both dist and dist_prod directories
   gulp.src('dist', { read: false }).pipe(clean());
   gulp.src('dist_prod', { read: false }).pipe(clean());
 });
@@ -283,6 +285,7 @@ gulp.task('jsES6', () => {
 /* HTML (dependency: compileHTML) */
 gulp.task('html', ['compileHTML'], () => {
   var sourceFile = null;
+  var cssPath = !prod ? `css/${cssOutputName}.css` : `${cssCDNPath}${cssOutputName}.css`;
   var jsPath = !prod ? `js/${jsOutputName}.js` : `${jsCDNPath}${jsOutputName}.js`;
   var jsFullPath = `<script src="${jsPath}"></script>`;
   var htmlreplaceData = {};
@@ -293,21 +296,13 @@ gulp.task('html', ['compileHTML'], () => {
     jsFullPath = `<script data-main="${jsPath}" src="${config.js.requireJs.path}"></script>`;
   }
 
-  // default data
-  if(!prod) {
-    // set local paths
-    htmlreplaceData = {
-      css: `<link type="text/css" rel="stylesheet" href="css/${cssOutputName}.css">`,
-      js: jsFullPath,
-    };
-  } else {
-    // set production paths
-    htmlreplaceData = {
-      css: `<link type="text/css" rel="stylesheet" href="${cssCDNPath}${cssOutputName}.css">`,
-      js: jsFullPath,
-    };
-  }
+  // set build paths
+  htmlreplaceData = {
+    css: `<link type="text/css" rel="stylesheet" href="${cssPath}">`,
+    js: jsFullPath,
+  };
 
+  // set source file(s)
   sourceFile = gulp.src([
     `${distFolderName}/**/*.html`,
   ]);
@@ -317,7 +312,7 @@ gulp.task('html', ['compileHTML'], () => {
     keepUnassigned: true
   }));
 
-  // use production paths?
+  // if production build
   if (prod) {
     // replace assets to reflect cdn (or production path)
     sourceFile = sourceFile.pipe(replace({
@@ -360,7 +355,7 @@ gulp.task('compileHTML', () => {
         // delete cache, we always want the latest json data..
         delete require.cache[require.resolve(pathToFile)];
 
-        // display what we are doing to the dev
+        // log that we are grabbing data
         console.log('grabbing data from: ' + pathToFile);
 
         return require(pathToFile);
@@ -380,7 +375,7 @@ gulp.task('compileHTML', () => {
 
 gulp.task('fonts', () => {
 
-  return gulp.src('./src/assets/fonts/*')
+  return gulp.src('./src/assets/fonts/**/*')
     .pipe(gulp.dest('./' + distFolderName + '/fonts'));
 });
 
@@ -390,7 +385,7 @@ gulp.task('fonts', () => {
 
 gulp.task('images', () => {
 
-  return gulp.src('./src/assets/images/**')
+  return gulp.src('./src/assets/images/**/*')
     .pipe(gulp.dest('./' + distFolderName + '/images'));
 });
 
@@ -400,7 +395,7 @@ gulp.task('images', () => {
 
 gulp.task('videos', () => {
 
-  return gulp.src('./src/assets/videos/*')
+  return gulp.src('./src/assets/videos/**/*')
     .pipe(gulp.dest('./' + distFolderName + '/videos'));
 });
 

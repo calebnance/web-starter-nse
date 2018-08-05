@@ -1,5 +1,5 @@
 {
-  "baseCdnName": "webstarter",
+  "cdnBase": "https://pathtocdnhere/",
   "cssVersion": "0.1",
   "jsVersion": "0.1",
   "gitProjectName": "web-starter-nse",
