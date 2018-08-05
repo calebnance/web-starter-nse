@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" class="{{ htmlClass }}">
+  {% include "partials/head.nunjucks" %}
+  <body class="{{ bodyClass }}">
+    {# setting page specific content #}
+    {% block content %}
+    {% endblock %}
+
+    {# these are added within it's respective nunjucks page #}
+    {% block pageSpecificJs %}
+    {% endblock %}
+
+    <!-- build:js -->
+    <!-- endbuild -->
+  </body>
+</html>
