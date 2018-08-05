@@ -36,8 +36,8 @@ const config = require('./gulp-config.json');
 // are we running in production?
 const prod = process.env.NODE_ENV === 'production';
 
-// dist folder
-const distFolderName = !prod ? 'dist' : 'dist_prod';
+// dist directory
+const distDir = !prod ? 'dist' : 'dist_prod';
 
 // base file names
 let cssOutputName = !prod ? `${config.outputFileName}.v${config.cssVersion}` : `${config.outputFileName}.v${config.cssVersion}.min`;
@@ -180,7 +180,7 @@ gulp.task('sass', () => {
     }));
   }
 
-  sourceFile.pipe(gulp.dest('./' + distFolderName + '/css'));
+  sourceFile.pipe(gulp.dest('./' + distDir + '/css'));
 });
 
 /******************************************************************************\
@@ -190,12 +190,12 @@ gulp.task('sass', () => {
 // (dependency: html, sass, & js need to finish first)
 gulp.task('purgecss', ['html', 'sass', 'js'], () => {
   return gulp
-    .src(`${distFolderName}/**/*.css`)
+    .src(`${distDir}/**/*.css`)
     .pipe(
       purgecss({
         content: [
-          `${distFolderName}/**/*.html`,
-          `${distFolderName}/**/*.js`,
+          `${distDir}/**/*.html`,
+          `${distDir}/**/*.js`,
         ],
         fontFace: true,
         keyframes: true
@@ -204,7 +204,7 @@ gulp.task('purgecss', ['html', 'sass', 'js'], () => {
     .pipe(rename({
       basename: `purged_${cssOutputName}`
     }))
-    .pipe(gulp.dest('./' + distFolderName));
+    .pipe(gulp.dest('./' + distDir));
 });
 
 /******************************************************************************\
@@ -248,7 +248,7 @@ gulp.task('jsRequire', () => {
       }))
   }
 
-  stream = stream.pipe(gulp.dest('./' + distFolderName + '/js'));
+  stream = stream.pipe(gulp.dest('./' + distDir + '/js'));
 });
 
 gulp.task('jsES6', () => {
@@ -275,7 +275,7 @@ gulp.task('jsES6', () => {
       }));
   }
 
-  stream = stream.pipe(gulp.dest('./' + distFolderName + '/js'));
+  stream = stream.pipe(gulp.dest('./' + distDir + '/js'));
 });
 
 /******************************************************************************\
@@ -304,7 +304,7 @@ gulp.task('html', ['compileHTML'], () => {
 
   // set source file(s)
   sourceFile = gulp.src([
-    `${distFolderName}/**/*.html`,
+    `${distDir}/**/*.html`,
   ]);
 
   // replace html
@@ -340,7 +340,7 @@ gulp.task('html', ['compileHTML'], () => {
     }));
   }
 
-  return sourceFile.pipe(gulp.dest('./' + distFolderName));
+  return sourceFile.pipe(gulp.dest('./' + distDir));
 });
 
 /* HTML :: COMPILE */
@@ -366,7 +366,7 @@ gulp.task('compileHTML', () => {
         path: './src/html/templates'
       }).on('error', pingError)
     )
-    .pipe(gulp.dest('./' + distFolderName));
+    .pipe(gulp.dest('./' + distDir));
 });
 
 /******************************************************************************\
@@ -376,7 +376,7 @@ gulp.task('compileHTML', () => {
 gulp.task('fonts', () => {
 
   return gulp.src('./src/assets/fonts/**/*')
-    .pipe(gulp.dest('./' + distFolderName + '/fonts'));
+    .pipe(gulp.dest('./' + distDir + '/fonts'));
 });
 
 /******************************************************************************\
@@ -386,7 +386,7 @@ gulp.task('fonts', () => {
 gulp.task('images', () => {
 
   return gulp.src('./src/assets/images/**/*')
-    .pipe(gulp.dest('./' + distFolderName + '/images'));
+    .pipe(gulp.dest('./' + distDir + '/images'));
 });
 
 /******************************************************************************\
@@ -396,7 +396,7 @@ gulp.task('images', () => {
 gulp.task('videos', () => {
 
   return gulp.src('./src/assets/videos/**/*')
-    .pipe(gulp.dest('./' + distFolderName + '/videos'));
+    .pipe(gulp.dest('./' + distDir + '/videos'));
 });
 
 /******************************************************************************\
