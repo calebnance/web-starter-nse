@@ -1,7 +1,7 @@
 import { addClass, removeClass } from './modules/services';
 
 setTimeout(() => {
-  console.log("es6 be working and stuff");
+  console.log('es6 be working and stuff');
 }, 1000);
 
 
@@ -19,4 +19,5 @@ setTimeout(() => {
   // using this class reference only within js
   // to try and break purgecss's logic
   addClass(img, 'fadeOut');
+  console.log('test of purgecss .fadeOut just happened :: worked!');
 }, 3000);
