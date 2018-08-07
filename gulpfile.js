@@ -350,7 +350,8 @@ gulp.task('compileHTML', () => {
     .pipe(
       data(function(file) {
         // set path to json file, specific to the HTML page we are compiling!
-        var pathToFile = './src/html/data/' + path.basename(file.path, '.nunjucks') + '.json';
+        const fileName = path.basename(file.path, '.nunjucks');
+        const pathToFile = `./src/html/data/${fileName}.json`;
 
         // delete cache, we always want the latest json data..
         delete require.cache[require.resolve(pathToFile)];
@@ -358,7 +359,12 @@ gulp.task('compileHTML', () => {
         // log that we are grabbing data
         console.log('grabbing data from: ' + pathToFile);
 
-        return require(pathToFile);
+        // grab specific page data
+        var pageData = require(pathToFile);
+        // set canonical
+        pageData.canonical = `${config.urlBase}${fileName}.html`;
+
+        return pageData;
       }).on('error', pingError)
     )
     .pipe(
