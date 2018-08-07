@@ -9,7 +9,7 @@
 {% block content %}
   {# DELETE THIS - start #}
   <div class="nav">
-    Web Starter NSE
+    Sample Top Bar
   </div>
   <div class="logo">
     <img src="images/ws-nse-logo.png" alt="web starter logo" class="display-none delay-800ms anime fadeIn">

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" class="{{ htmlClass }}">
+<html lang="{{ htmlLanguage }}" class="{{ htmlClass }}">
+
   {% include "partials/head.nunjucks" %}
+
   <body class="{{ bodyClass }}">
     {# setting page specific content #}
     {% block content %}
@@ -11,6 +13,7 @@
     {% endblock %}
 
     <!-- build:js -->
+      <!-- do not remove this build tag -->
     <!-- endbuild -->
   </body>
 </html>

@@ -1,6 +1,9 @@
 {
+  "htmlLanguage": "en",
   "htmlClass": "",
   "bodyClass": "",
   "pageTitle": "Welcome - Web Starter NSE",
-  "pageDescr": ""
+  "pageDescr": "welcome to the web starter package",
+  "pageKeywords": "scss, html, nunjucks, javascript, es6",
+  "robotType": "index, follow"
 }
