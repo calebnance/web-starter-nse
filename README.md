@@ -5,6 +5,13 @@ It's a starting package to get a web project up and running quickly but with car
 
 ### Table of Contents:
 * [Install](#install)
+* [Technologies Used](#technologies-used)
+    * [SCSS](#scss)
+    * [Javascript](#javascript)
+    * [Nunjucks (HTML)](#nunjucks-html)
+* [Gulp Builds (dev/prod)](#gulp-builds-devprod)
+
+---
 
 #### Key features:
 * Modular build, include what you need, nothing else for all 3 technologies.
