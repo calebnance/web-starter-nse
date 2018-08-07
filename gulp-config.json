@@ -1,4 +1,5 @@
 {
+  "urlBase": "https://pathtoyoursitehere/",
   "cdnBase": "https://pathtocdnhere/",
   "cssVersion": "0.1",
   "jsVersion": "0.1",
