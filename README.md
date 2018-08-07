@@ -1,9 +1,10 @@
 # Web Starter NSE - Nunjucks, SCSS, ES6 Modules
 
 ## Overview
-It's a starting package to get a web project up and running quickly but with careful thought into production ready code, using: Nunjucks templating, SCSS and ES6 Modules out of the box!
+It's a starting package to get a web project up and running quickly but with careful thought into **production ready code**, using: Nunjucks templating, SCSS and ES6 Modules out of the box!
 
 ### Table of Contents:
+* [Install](#install)
 
 #### Key features:
 * Modular build, include what you need, nothing else for all 3 technologies.
