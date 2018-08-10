@@ -112,6 +112,11 @@ A simple html templating structure that will pretty much handle everything you w
 
 **Production Build**
 * Run: `npm run prod` when code is ready for production.
-* TODO :: explain the entire process
+* What happens during the **production** build?
+  * All references to fonts, images and videos (within css and html) are now pointing to the CDN base url set within `gulp-config.json`
+  * SCSS compiled to css (with autoprefixer set for last 2 versions of browsers) and minified.
+  * JS compiled, minified, and removal of all console, debug and alert leftovers (via [strip-debug](https://www.npmjs.com/package/gulp-strip-debug))
+  * Nunjucks templating to HTML compiled and [minified](https://github.com/kangax/html-minifier#options-quick-reference) with `collapseWhitespace` and `removeComments` set to true.
+  * Purge CSS runs at the very end, removes all unused css that is not referenced in the HTML or JS.
 
 built with :heart:, Caleb
