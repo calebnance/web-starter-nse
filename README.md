@@ -102,7 +102,13 @@ A simple html templating structure that will pretty much handle everything you w
 
 **Dev Build**
 * Run: `npm run dev` when developing locally.
-* TODO :: explain the entire process
+* What happens during the dev build?
+    * Watch tasks are initiated, all files edited will rebuild respectively (edit a .scss file, `sass` task rebuilds... etc).
+    * Any fonts, images and videos moved to `dist` directory.
+    * SCSS compiled to css (with autoprefixer set for last 2 versions of browsers)
+    * JS compiled, source maps created
+    * Nunjucks templating to HTML compiled
+    * Purge CSS runs at the very end, removes all unused css that is not referenced in the HTML or JS.
 
 **Production Build**
 * Run: `npm run prod` when code is ready for production.
