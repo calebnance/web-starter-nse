@@ -270,6 +270,7 @@ gulp.task('jsES6', () => {
   } else {
     stream = stream
       .pipe(uglify())
+      .pipe(stripDebug())
       .pipe(rename({
         basename: jsOutputName + '.min'
       }));
