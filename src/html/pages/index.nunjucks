@@ -8,12 +8,13 @@
 {# setting page specific content #}
 {% block content %}
   {# DELETE THIS - start #}
-  <div class="nav">
+  <header class="nav">
     Sample Top Bar
-  </div>
-  <div class="logo">
+  </header>
+  <main class="logo">
+    <h1>Hello World</h1>
     <img src="images/ws-nse-logo.png" alt="web starter logo" class="display-none delay-800ms anime fadeIn">
-  </div>
+  </main>
   {# DELETE THIS - end #}
 {% endblock %}
 
