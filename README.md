@@ -24,6 +24,8 @@ It's a starting package to get a web project up and running quickly but with car
 * Production build gives the option for CDN base pathing across the board (replacing all local/relative pathing).
 * Error handling, with terminal notifications when something went wrong (doesn't break watchmen listen chain)
 
+**Before you get started, please edit the `gulp-config.json`**
+
 ## Install
 
 Make sure you have NodeJS - [download](https://nodejs.org/)
