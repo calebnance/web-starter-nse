@@ -1,3 +1,5 @@
+const gulp = require('gulp');
+
 // gulp all the things
 const autoprefixer = require('gulp-autoprefixer');
 const babel = require('babelify');
@@ -9,7 +11,6 @@ const clear = require('clear');
 const concat = require('gulp-concat');
 const data = require('gulp-data');
 const fs = require('fs');
-const gulp = require('gulp');
 const htmlmin = require('gulp-htmlmin');
 const htmlreplace = require('gulp-html-replace');
 const notifier = require('node-notifier');
@@ -180,7 +181,7 @@ gulp.task('sass', () => {
     }));
   }
 
-  sourceFile.pipe(gulp.dest('./' + distDir + '/css'));
+  sourceFile.pipe(gulp.dest(`./${distDir}/css`));
 });
 
 /******************************************************************************\
@@ -204,7 +205,7 @@ gulp.task('purgecss', ['html', 'sass', 'js'], () => {
     .pipe(rename({
       basename: `purged_${cssOutputName}`
     }))
-    .pipe(gulp.dest('./' + distDir));
+    .pipe(gulp.dest(`./${distDir}`));
 });
 
 /******************************************************************************\
@@ -248,7 +249,7 @@ gulp.task('jsRequire', () => {
       }))
   }
 
-  stream = stream.pipe(gulp.dest('./' + distDir + '/js'));
+  stream = stream.pipe(gulp.dest(`./${distDir}/js`));
 });
 
 gulp.task('jsES6', () => {
@@ -276,7 +277,7 @@ gulp.task('jsES6', () => {
       }));
   }
 
-  stream = stream.pipe(gulp.dest('./' + distDir + '/js'));
+  stream = stream.pipe(gulp.dest(`./${distDir}/js`));
 });
 
 /******************************************************************************\
@@ -341,7 +342,7 @@ gulp.task('html', ['compileHTML'], () => {
     }));
   }
 
-  return sourceFile.pipe(gulp.dest('./' + distDir));
+  return sourceFile.pipe(gulp.dest(`./${distDir}`));
 });
 
 /* HTML :: COMPILE */
@@ -373,7 +374,7 @@ gulp.task('compileHTML', () => {
         path: './src/html/templates'
       }).on('error', pingError)
     )
-    .pipe(gulp.dest('./' + distDir));
+    .pipe(gulp.dest(`./${distDir}`));
 });
 
 /******************************************************************************\
@@ -383,7 +384,7 @@ gulp.task('compileHTML', () => {
 gulp.task('fonts', () => {
 
   return gulp.src('./src/assets/fonts/**/*')
-    .pipe(gulp.dest('./' + distDir + '/fonts'));
+    .pipe(gulp.dest(`./${distDir}/fonts`));
 });
 
 /******************************************************************************\
@@ -393,7 +394,7 @@ gulp.task('fonts', () => {
 gulp.task('images', () => {
 
   return gulp.src('./src/assets/images/**/*')
-    .pipe(gulp.dest('./' + distDir + '/images'));
+    .pipe(gulp.dest(`./${distDir}/images`));
 });
 
 /******************************************************************************\
@@ -403,7 +404,7 @@ gulp.task('images', () => {
 gulp.task('videos', () => {
 
   return gulp.src('./src/assets/videos/**/*')
-    .pipe(gulp.dest('./' + distDir + '/videos'));
+    .pipe(gulp.dest(`./${distDir}/videos`));
 });
 
 /******************************************************************************\
