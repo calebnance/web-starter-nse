@@ -199,7 +199,8 @@ gulp.task('purgecss', ['html', 'sass', 'js'], () => {
           `${distDir}/**/*.js`,
         ],
         fontFace: true,
-        keyframes: true
+        keyframes: true,
+        whitelistPatterns: [/^fade/]
       })
     )
     .pipe(rename({
